@@ -43,6 +43,16 @@ std::vector<Token> Lexer::createTokens()
             output.push_back({TokenType::Divide, "/"});
             pos++;
         }
+        else if (input[pos] == '(')
+        {
+            output.push_back({TokenType::OpenParenthesis, "("});
+            pos++;
+        }
+        else if (input[pos] == ')')
+        {
+            output.push_back({TokenType::CloseParenthesis, ")"});
+            pos++;
+        }
 		else
 		{
 			std::cerr << "Error: Invalid character" << std::endl;

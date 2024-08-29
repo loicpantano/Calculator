@@ -4,7 +4,7 @@
 
 enum class TokenType
 {
-	Value, Plus, Minus, Multiply, Divide
+	Value, Plus, Minus, Multiply, Divide, OpenParenthesis, CloseParenthesis
 };
 
 

@@ -3,7 +3,7 @@
 /*
  * Expression : SumDiff + SumDiff | SumDiff - SumDiff | SumDiff
  * Sumdiff : Factor * Factor | Factor / Factor | Factor
- * Factor : Value
+ * Factor : (Expression) | Value
  */
 
 
@@ -37,7 +37,18 @@ void Parser::sumdiff() {
 
 void Parser::factor()
 {
-    if (tokens[pos].type == TokenType::Value) 
+    if (tokens[pos].type == TokenType::OpenParenthesis)
+    {
+        next();
+        expression();
+        if (tokens[pos].type == TokenType::CloseParenthesis) next();
+        else
+        {
+            std::cerr << "Error: Missing closing parenthesis" << std::endl;
+            exit(1);
+        }
+    }
+    else if (tokens[pos].type == TokenType::Value)
     {
         std::cout << tokens[pos].value;
         next();
