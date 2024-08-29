@@ -1,4 +1,9 @@
-#pragma once
+//
+// Created by loicp on 29/08/2024.
+//
+
+#ifndef CALCULATOR_LEXER_H
+#define CALCULATOR_LEXER_H
 #include <iostream>
 #include <vector>
 
@@ -23,3 +28,5 @@ public:
 
 	std::vector<Token> createTokens();
 };
+
+#endif //CALCULATOR_LEXER_H

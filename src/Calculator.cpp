@@ -1,3 +1,7 @@
+//
+// Created by loicp on 29/08/2024.
+//
+
 #include "../include/Calculator.h"
 
 
@@ -12,7 +16,9 @@ void Calculator::inputText()
 
     Parser parser(lexer.createTokens());
 
-    parser.parse();
+
+    int res = IPNCalculator::calculate(parser.parse());
+    std::cout << res << std::endl;
 }
 
 

@@ -1,4 +1,9 @@
-#pragma once
+//
+// Created by loicp on 29/08/2024.
+//
+
+#ifndef CALCULATOR_PARSER_H
+#define CALCULATOR_PARSER_H
 #include "Lexer.h"
 
 
@@ -21,3 +26,5 @@ public:
 
     std::vector<Token> parse();
 };
+
+#endif //CALCULATOR_PARSER_H
