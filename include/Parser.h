@@ -12,9 +12,9 @@ private:
 
     void expression();
 
-
 	void sumdiff();
 
+    void factor();
 public:
     Parser(const std::vector<Token>& tokens) : tokens(tokens), pos(0) {}
 

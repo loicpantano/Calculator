@@ -2,7 +2,8 @@
 
 /*
  * Expression : SumDiff + SumDiff | SumDiff - SumDiff | SumDiff
- * Sumdiff : Value
+ * Sumdiff : Factor * Factor | Factor / Factor | Factor
+ * Factor : Value
  */
 
 
@@ -24,7 +25,17 @@ void Parser::expression()
 	}
 }
 
-void Parser::sumdiff()
+void Parser::sumdiff() {
+    factor();
+    while (tokens[pos].type == TokenType::Multiply || tokens[pos].type == TokenType::Divide) {
+        Token op = tokens[pos];
+        next();
+        factor();
+        std::cout << op.value;
+    }
+}
+
+void Parser::factor()
 {
     if (tokens[pos].type == TokenType::Value) 
     {

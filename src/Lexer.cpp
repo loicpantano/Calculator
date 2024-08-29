@@ -33,6 +33,16 @@ std::vector<Token> Lexer::createTokens()
 			output.push_back({TokenType::Minus, "-"});
 			pos++;
 		}
+        else if (input[pos] == '*')
+        {
+            output.push_back({TokenType::Multiply, "*"});
+            pos++;
+        }
+        else if (input[pos] == '/')
+        {
+            output.push_back({TokenType::Divide, "/"});
+            pos++;
+        }
 		else
 		{
 			std::cerr << "Error: Invalid character" << std::endl;
