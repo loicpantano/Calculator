@@ -21,7 +21,7 @@ void Parser::expression()
         Token op = tokens[pos];
         next();
 		sumdiff();
-        std::cout << op.value;
+        this->ipn.push_back(op);
 	}
 }
 
@@ -31,7 +31,7 @@ void Parser::sumdiff() {
         Token op = tokens[pos];
         next();
         factor();
-        std::cout << op.value;
+        this->ipn.push_back(op);
     }
 }
 
@@ -50,7 +50,7 @@ void Parser::factor()
     }
     else if (tokens[pos].type == TokenType::Value)
     {
-        std::cout << tokens[pos].value;
+        this->ipn.push_back(tokens[pos]);
         next();
     }
     else
@@ -61,8 +61,14 @@ void Parser::factor()
 }
 
 
-void Parser::parse() {
+std::vector<Token> Parser::parse() {
     std::cout << "Parser Started" << std::endl;
+    this->ipn = std::vector<Token>();
     expression();
-    std::cout << std::endl <<  "Parser Finished" << std::endl;
+    std::cout <<  "Parser Finished" << std::endl;
+    for (Token token : this->ipn) {
+        std::cout << token.value;
+    }
+    std::cout << std::endl;
+    return this->ipn;
 }

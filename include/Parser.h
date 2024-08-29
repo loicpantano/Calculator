@@ -7,6 +7,7 @@ class Parser
 private:
     std::vector<Token> tokens;
     int pos;
+    std::vector<Token> ipn;
 
     void next();
 
@@ -16,7 +17,7 @@ private:
 
     void factor();
 public:
-    Parser(const std::vector<Token>& tokens) : tokens(tokens), pos(0) {}
+    Parser(const std::vector<Token>& tokens) : tokens(tokens), pos(0), ipn() {}
 
-    void parse();
+    std::vector<Token> parse();
 };
