@@ -7,7 +7,7 @@
 /*
  * Expression : SumDiff + SumDiff | SumDiff - SumDiff | SumDiff
  * Sumdiff : Factor * Factor | Factor / Factor | Factor
- * Factor : (Expression) | Value
+ * Factor : -Factor | (Expression) | Value
  */
 
 
@@ -41,6 +41,14 @@ void Parser::sumdiff() {
 
 void Parser::factor()
 {
+    if (tokens[pos].type == TokenType::Minus)
+    {
+        next();
+        factor();
+        this->ipn.push_back({TokenType::Value, "-1"});
+        this->ipn.push_back({TokenType::Multiply, "*"});
+    }
+    else
     if (tokens[pos].type == TokenType::OpenParenthesis)
     {
         next();
